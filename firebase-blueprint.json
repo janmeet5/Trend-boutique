@@ -1,0 +1,116 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Customer account details and preferences",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "fullName": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "city": { "type": "string" },
+        "defaultAddress": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "fullName", "phone", "createdAt", "updatedAt"]
+    },
+    "BoutiqueOrder": {
+      "title": "BoutiqueOrder",
+      "description": "Custom Punjabi suit stitching order with live status",
+      "type": "object",
+      "properties": {
+        "orderId": { "type": "string" },
+        "userId": { "type": "string" },
+        "suitId": { "type": "string" },
+        "suitTitle": { "type": "string" },
+        "fabric": { "type": "string" },
+        "neck": { "type": "string" },
+        "sleeve": { "type": "string" },
+        "bottom": { "type": "string" },
+        "dupatta": { "type": "string" },
+        "fabricSource": { "type": "string" },
+        "sizingChoiceType": { "type": "string" },
+        "sampleCount": { "type": "integer" },
+        "fitNotes": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "deliveryAddress": { "type": "string" },
+        "city": { "type": "string" },
+        "pincode": { "type": "string" },
+        "landmark": { "type": "string" },
+        "pickupDate": { "type": "string" },
+        "pickupSlot": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "isPaid": { "type": "boolean" },
+        "totalAmount": { "type": "integer" },
+        "status": { "type": "string" },
+        "stepIndex": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["orderId", "userId", "suitTitle", "totalAmount", "paymentMethod", "status", "createdAt", "updatedAt"]
+    },
+    "MeasurementProfile": {
+      "title": "MeasurementProfile",
+      "description": "Stored measurement sizes for 1-click reorders",
+      "type": "object",
+      "properties": {
+        "profileId": { "type": "string" },
+        "userId": { "type": "string" },
+        "label": { "type": "string" },
+        "bust": { "type": "number" },
+        "waist": { "type": "number" },
+        "hips": { "type": "number" },
+        "kurtaLength": { "type": "number" },
+        "bottomLength": { "type": "number" },
+        "neckDepth": { "type": "number" },
+        "sleeveLength": { "type": "number" },
+        "shoulder": { "type": "number" },
+        "armhole": { "type": "number" },
+        "notes": { "type": "string" },
+        "isDefault": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["profileId", "userId", "label", "bust", "waist", "hips", "createdAt", "updatedAt"]
+    },
+    "TailorConsultation": {
+      "title": "TailorConsultation",
+      "description": "Scheduled tailor call or video consultation request",
+      "type": "object",
+      "properties": {
+        "consultationId": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "city": { "type": "string" },
+        "preferredSlot": { "type": "string" },
+        "language": { "type": "string" },
+        "topic": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["consultationId", "userId", "name", "phone", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document"
+    },
+    "/users/{userId}/orders/{orderId}": {
+      "schema": "BoutiqueOrder",
+      "description": "User stitching and customization orders"
+    },
+    "/users/{userId}/measurements/{profileId}": {
+      "schema": "MeasurementProfile",
+      "description": "User saved measurement fitting sizes"
+    },
+    "/users/{userId}/consultations/{consultationId}": {
+      "schema": "TailorConsultation",
+      "description": "User tailor phone or video consultation requests"
+    }
+  }
+}

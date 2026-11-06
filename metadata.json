@@ -1,0 +1,6 @@
+{
+  "name": "The Trend Boutique",
+  "description": "Punjab's premier custom suit stitching & ethnic tailoring boutique — Punjabi suits, Plazos, Anarkalis with smart measurement pickup & doorstep delivery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
